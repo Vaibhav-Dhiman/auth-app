@@ -5,7 +5,7 @@ import { webService } from './we.service';
     selector: 'messages',
     template: ` 
     <div *ngFor="let m of messages">
-        <mat-card style="margin: 8px;">
+        <mat-card class="card">
         <mat-card-title>{{m.owner}}</mat-card-title>
         <mat-card-content>
           {{m.text}}
