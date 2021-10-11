@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { webService } from './we.service';
 
 @Component({
@@ -23,7 +23,10 @@ import { webService } from './we.service';
 })
 
 export class NewMessageComponent {
-    messages: any;
+    messages: any = [];
+
+    @Output() onPosted = new EventEmitter();
+
     constructor(private readonly webdata: webService) {}
     message  = {
         owner: "",
@@ -32,7 +35,8 @@ export class NewMessageComponent {
     
     submit() {
         this.webdata.postMessage(this.message).subscribe(data=>{
-            alert('Added');
+            //this.messages.push(data);
+             this.onPosted.emit(data);
         });
     }
 }
