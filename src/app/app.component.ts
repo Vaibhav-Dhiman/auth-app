@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { MessageComponent } from './message.component';
+import { NavBarComponent } from './nav.component';
 import { NewMessageComponent } from './new-message-component';
+
 @Component({
   selector: 'app-root',
-  template: `<h1>Message Board</h1>
+  template: ` <nav></nav>
               <new-message (onPosted)="onPosted($event)">
               </new-message>
               <messages>

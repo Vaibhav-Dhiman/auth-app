@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { webService } from './we.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'messages',
@@ -16,11 +17,22 @@ import { webService } from './we.service';
 
 export class MessageComponent {
     messages: any;
-    constructor(private readonly webdata: webService) {}
+    constructor(private readonly webdata: webService,
+        private _snackBar: MatSnackBar) {}
+
+
+    openSnackBar() {
+      this._snackBar.open("Data Not Found", "Failed", {
+      duration: 3 * 1000,
+       });
+    }
+
     ngOnInit() {
-    this.webdata.getmessages().subscribe(data => {
+    this.webdata.getmessages().subscribe( data => {
         console.log(data);
         this.messages = data;
+    }, error => {
+        this.openSnackBar();
     })
     }
 }
