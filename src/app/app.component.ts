@@ -1,21 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
-import { MessageComponent } from './message.component';
-import { NavBarComponent } from './nav.component';
-import { NewMessageComponent } from './new-message-component';
+import { Component} from '@angular/core';
+import { MessagesComponent } from './messages.component';
+import { NewMessageComponent } from './new-message.component';
+import { NavComponent } from './nav.component';
 
 @Component({
   selector: 'app-root',
-  template: ` <nav></nav>
-              <new-message (onPosted)="onPosted($event)">
-              </new-message>
-              <messages>
-              `,
-  styleUrls: ['./app.component.css']
+  template: `
+    <nav></nav>
+    <router-outlet></router-outlet>
+  `,
 })
-export class AppComponent {
-  @ViewChild(MessageComponent) messages!: MessageComponent;
-
-   onPosted(message: any) {
-     this.messages.messages.push(message);
-   }
-}
+export class AppComponent  {}

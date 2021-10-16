@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
     selector: 'nav',
-    template: ` 
-    <mat-toolbar color="primary">
-    Message Board
-    </mat-toolbar>
+    template: `
+        <md-toolbar color="primary">
+            <button md-button routerLink="/" >Message Board</button>
+            <button md-button routerLink="/messages" >Messages</button>
+        </md-toolbar>
     `
 })
-
-export class NavBarComponent {
+export class NavComponent {
     constructor() {}
 }

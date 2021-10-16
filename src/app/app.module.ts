@@ -1,46 +1,37 @@
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
-
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
-import { MessageComponent } from './message.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { webService } from './we.service';
-import { NewMessageComponent } from './new-message-component';
+import { MdButtonModule, MdCardModule, MdInputModule, MdSnackBarModule, MdToolbarModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { NavBarComponent } from './nav.component';
+import { RouterModule } from '@angular/router';
+
+import { MessagesComponent } from './messages.component';
+import { AppComponent } from './app.component';
+import { WebService } from './web.service';
+import { NewMessageComponent } from './new-message.component';
+import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
 
+var routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent
+  },
+  {
+    path: 'messages/:name',
+    component: MessagesComponent
+  }];
+
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavBarComponent,
-    MessageComponent,
-    NewMessageComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    FormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCardModule
-  ],
-  providers: [webService],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(routes), BrowserAnimationsModule, MdButtonModule, MdCardModule, MdInputModule, MdSnackBarModule, MdToolbarModule],
+  declarations: [AppComponent, MessagesComponent, NewMessageComponent, NavComponent, HomeComponent],
+  bootstrap: [AppComponent],
+  providers: [WebService]
 })
 export class AppModule { }

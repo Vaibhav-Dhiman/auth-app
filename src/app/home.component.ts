@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { NavBarComponent } from './nav.component';
+import { Component} from '@angular/core';
+import { MessagesComponent } from './messages.component';
+import { NewMessageComponent } from './new-message.component';
+import { NavComponent } from './nav.component';
 
 @Component({
-  selector: 'app-root',
-  template: ` <nav></nav>
-  <router-outlet></router-outlet>
+  selector: 'home',
+  template: `
+    <new-message></new-message>
+    <messages></messages>
   `,
-
 })
-
-export class HomeComponent {
-}
+export class HomeComponent  {}
