@@ -1,0 +1,26 @@
+<md-card>
+    <form [formGroup] = "form" >
+<md-input-container>
+    <input style="width: 300px;" [ngClass]= "{'error': isValid('firstName')}" mdInput placeholder="First Name" formControlName="firstName">
+</md-input-container>
+
+<md-input-container>
+    <input  mdInput placeholder="Last Name" [ngClass]= "{'error': isValid('lastName')}"   formControlName="lastName">
+</md-input-container>
+
+<md-input-container>
+    <input  type="email" mdInput placeholder="Email" [ngClass]= "{'error': isValid('email')}"  formControlName="email">
+</md-input-container>
+
+<md-input-container>
+    <input  type="password" mdInput placeholder="Password" [ngClass]= "{'error': isValid('password')}"  formControlName="password">
+</md-input-container>
+
+<md-input-container>
+    <input  type="password" mdInput placeholder="Confirm Password" [ngClass]= "{'error': isValid('confirmPassword')}"  formControlName="confirmPassword">
+</md-input-container>
+
+<span *ngIf="form.errors">Password Not Matched</span>
+<button md-raised-button color="primary" [disabled]="!form.valid" (click)="register()">Register</button>
+</form>
+</md-card>
