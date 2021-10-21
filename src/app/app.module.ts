@@ -14,6 +14,7 @@ import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register.component';
 import { AuthService } from './auth.service';
+import { LoginComponent } from './login.component';
 
 var routes = [
   {
@@ -29,20 +30,24 @@ var routes = [
     component: RegisterComponent
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'messages/:name',
     component: MessagesComponent
   }];
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, FormsModule, 
-            RouterModule.forRoot(routes), BrowserAnimationsModule, 
-            MdButtonModule, MdCardModule, MdInputModule, 
+  imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(routes), 
+            BrowserAnimationsModule, MdButtonModule, MdCardModule, MdInputModule,
             MdSnackBarModule, MdToolbarModule, ReactiveFormsModule],
             
-  declarations: [AppComponent, RegisterComponent, MessagesComponent,
-                 NewMessageComponent, NavComponent, HomeComponent],
+  declarations: [AppComponent, RegisterComponent, MessagesComponent, NewMessageComponent, 
+                 NavComponent, HomeComponent, LoginComponent],
   bootstrap: [AppComponent],
   providers: [WebService, AuthService]
 })
+
 export class AppModule { }

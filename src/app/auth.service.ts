@@ -23,9 +23,25 @@ export class AuthService {
     register(user) {
         delete user.confirmPassword;
         this.http.post(this.BASE_URL + '/register', user).subscribe(res => {
-                localStorage.setItem(this.TOKEN_KEY, res.json().token)
-                localStorage.setItem(this.NAME_KEY, res.json().firstName)
-                this.router.navigate(['/']);
+            this.authenticate(res);
+
         });
+    }
+
+    logout() {
+        localStorage.removeItem(this.TOKEN_KEY);
+        localStorage.removeItem(this.NAME_KEY);
+    }
+
+    login(logindata) {
+        this.http.post(this.BASE_URL + '/login', logindata).subscribe(res => {
+            this.authenticate(res);
+      });
+    }
+
+    authenticate(res) {
+        localStorage.setItem(this.TOKEN_KEY, res.json().token)
+        localStorage.setItem(this.NAME_KEY, res.json().firstName)
+        this.router.navigate(['/']);
     }
 }
