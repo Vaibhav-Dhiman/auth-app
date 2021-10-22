@@ -22,5 +22,6 @@ export class MessagesComponent {
         this.webService.messageSubject.subscribe(msg => {
             this.messages = msg;
         });
+        this.webService.getUser().subscribe();
     }   
 }
