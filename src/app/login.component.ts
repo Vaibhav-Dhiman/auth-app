@@ -13,7 +13,7 @@ import { AuthService } from './auth.service';
             <input style="width: 300px;" [(ngModel)] = "loginData.password" mdInput placeholder="Password" type="password">
         </md-input-container>
     
-        <button md-raised-button color="primary" (click)="login()">Register</button>
+        <button md-raised-button color="primary" (click)="login()">Login</button>
 
     </md-card>
 

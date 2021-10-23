@@ -38,8 +38,11 @@ export class WebService {
     }
 
     getUser() {
-        debugger;
         return this.http.get(this.BASE_URL + '/user/me', this.authService.tokenHeader).map(res => res.json());
+    }
+
+    saveUser(userData) {
+        return this.http.post(this.BASE_URL + '/user/me',userData, this.authService.tokenHeader).map(res => res.json());
     }
 
     private handleError(error) {

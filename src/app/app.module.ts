@@ -15,6 +15,7 @@ import { HomeComponent } from './home.component';
 import { RegisterComponent } from './register.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login.component';
+import { UserComponent } from './user.component';
 
 var routes = [
   {
@@ -34,6 +35,10 @@ var routes = [
     component: LoginComponent
   },
   {
+    path: 'user',
+    component: UserComponent
+  },
+  {
     path: 'messages/:name',
     component: MessagesComponent
   }];
@@ -45,7 +50,7 @@ var routes = [
             MdSnackBarModule, MdToolbarModule, ReactiveFormsModule],
             
   declarations: [AppComponent, RegisterComponent, MessagesComponent, NewMessageComponent, 
-                 NavComponent, HomeComponent, LoginComponent],
+                 NavComponent, HomeComponent, LoginComponent, UserComponent],
   bootstrap: [AppComponent],
   providers: [WebService, AuthService]
 })
